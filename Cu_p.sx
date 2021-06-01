@@ -1,0 +1,55 @@
+# Crystal system (XtalSys):
+CUBIC
+
+# Crystal axex (XtalAxis):
+1.0 1.0 1.0
+
+# Total number of modes listed in the file (N_modes_max):
+2
+
+# Number of modes to be used in the calculation (N_modes):
+1
+
+# Labels of the modes to be used (iMode):
+1
+# Mode# 1 -- <110>(111) SLIP
+	nsmx	nrsx	gamd0x	twshx	isectwx
+	12		10.		1.0		0.0		0
+	tau0xf	tau0xb	tau1x	thet0	thet1
+	0.0		0.0		5.		400.	250.
+	hselfx	hlatex
+	1.0		1.0
+	Slip (n-b)
+	1 1 -1		0 1 1
+	1 1 -1		1 0 1
+	1 1 -1		1 -1 0
+	1 -1 -1		0 1 -1
+	1 -1 -1		1 0 1
+	1 -1 -1		1 1 0
+	1 -1 1		0 1 1
+	1 -1 1		1 0 -1
+	1 -1 1		1 1 0
+	1 1 1		0 1 -1
+	1 1 1		1 0 -1
+	1 1 1		1 -1 0
+# Mode# 100 <110>(111) SLIP
+	nsmx	nrsx	gamd0x	twshx	isectwx
+	12		10.		1.0		0.0		0
+	tau0xf	tau0xb	tau1x	thet0	thet1
+	9.0		9.0		5.		400.	250.
+	hselfx	hlatex
+	1.0		1.0
+	Slip (n-b)
+	1 1 -1		0 1 1
+	1 1 -1		1 0 1
+	1 1 -1		1 -1 0
+	1 -1 -1		0 1 -1
+	1 -1 -1		1 0 1
+	1 -1 -1		1 1 0
+	1 -1 1		0 1 1
+	1 -1 1		1 0 -1
+	1 -1 1		1 1 0
+	1 1 1		0 1 -1
+	1 1 1		1 0 -1
+	1 1 1		1 -1 0
+
