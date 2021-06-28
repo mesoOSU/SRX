@@ -26,14 +26,14 @@ ElastConst_PhaseI	162700.	119000.	71150.	0.35
 # The above is not actually used because we use T-dependent elastic stiffness
 
 # Data file containing info of phase 1
-Slip_PhaseI		Cu_p.sx
+Slip_PhaseI		Cu_p_hard.sx
 
 # Elastic constants of phase 1: c11, c12, c44, nu
 # Gas, ignored!
 ElastConst_PhaseII	80000.0	55000.0	35150.0	0.35
 
 # Data file containing info of phase 2
-Slip_PhaseII	Cu_p_1.sx
+Slip_PhaseII	Cu_p.sx
 
 
 #====================================================
