@@ -31,7 +31,7 @@ CUBIC
 	nsmx	nrsx	gamd0x	twshx	isectwx
 	12		10.		1.0		0.0		0
 	tau0xf	tau0xb	tau1x	thet0	thet1
-	0.0		0.0		5.		400.	250.
+	0.1		0.1		5.		400.	250.
 	hselfx	hlatex
 	1.0		1.0
 	Slip (n-b)
