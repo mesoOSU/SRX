@@ -1,0 +1,185 @@
+#===============
+#=====================================
+#	Materials types, properties, phases
+#---------------------------------------------------
+# Number of phases
+N_phases	2
+
+# System size
+# CellDim   128 128 128
+CellDim   8 8 8
+
+# Data file of initial microstructure
+#initial_ms		/public/home/pzhao/work/VPSC/evpfft/msDataBase/AlSingleXtal_8x8x8.ms
+#initial_ms		/public/home/pzhao/work/VPSC/evpfft/msDataBase/poly_4N_Cu.ms
+#initial_ms		/public/home/pzhao/work/VPSC/evpfft/msDataBase/4N_Cu_many_32.ms
+initial_ms	 out888.txt
+# Type of phase-1 and phase-2 (in accordance with the following order)
+# 0(xtal) 1(gas)
+Type_phases		0	1
+
+# Elastic constants of phase 1: c11, c12, c44, nu
+# Copper, in MPa 473K
+ElastConst_PhaseI	162700.	119000.	71150.	0.35
+# Copper, in MPa 723K
+#ElastConst_PhaseI	152500.	114000.	64360.	0.35
+# The above is not actually used because we use T-dependent elastic stiffness
+
+# Data file containing info of phase 1
+Slip_PhaseI		Cu_p.sx
+
+# Elastic constants of phase 1: c11, c12, c44, nu
+# Gas, ignored!
+ElastConst_PhaseII	0.0	0.0	0.0	0.0
+
+# Data file containing info of phase 2
+Slip_PhaseII	XXXXX
+
+
+#====================================================
+#	Boundary conditions
+#----------------------------------------------------ss
+# Flags for velocity gradient (0:unknown, 1:known) Voigt notation
+VelGrad_BC_Flag		0 1 0 1 1 1
+
+# Velocity gradient
+VelGrad_BC		-0.5E-3 1.0E-3 -0.5E-3 0.0 0.0 0.0
+
+# Flags for Cauchy stress
+Stress_BC_Flag		1 0 1 0 0 0
+
+# Applied Cauchy stress
+Stress_BC	0. 0. 0. 0. 0. 0.
+
+# elasticity BC: 0 -(e_homo=0), 1 -(relaxed bc)
+ElastBC		1
+
+#====================================================
+#	Simulation setup
+#----------------------------------------------------
+# Time increment
+TimeStep 0.1
+
+# Total simulation steps
+N_steps		2000
+
+# Error tolerance
+Err		5E-5
+
+# Maximum iteration steps allowed to solve micromechanical problem
+IterMax		1000
+
+# write fields?(0:No, 1:Yes)	write step interval
+PrintControl	1     1000
+
+# Update texture flag
+Update_Flag		1
+
+# Hardening flag
+Hard_Flag		1
+
+# Texture output flag
+Tex_Flag		1
+
+
+#====================================================
+#	Dislocation density based constitutive model
+#----------------------------------------------------
+# A. Ma et al. Acta Mater. 54(2006) 2169
+# lattice parameters for each phase [nm]
+a0	0.362	0.0
+# voxel length used in GND [mm]
+#L0	0.03
+L0     0.0045
+# Used to scale L0 to saturate GND
+#GND_ScaleRatio	1000.0
+GND_ScaleRatio	200.0
+# Activation energy for slip [1E-19J]
+Q_slip		2.0	0.0
+# Activation energy for climb [1E-19J]
+Q_bulk		1.6 0.0
+# Initial SSD density [1E12/m^2]
+rho_SSD_initial	   1.0
+# Temperature [Ki
+T__K  300
+# Constant for passing stress
+C_1		1.0	0.0
+# Constant for jump width
+C_2		1.0	0.0
+# Constant for obstacle width
+C_3		1.0	0.0
+# Constant for lock forming rate [1E6/m]
+C_4 	600.0 	0.0
+## Constant for 6thermal annihilation rate 
+C_5	17.6	0.0
+## Constant for thermal annihilation rate [1/nm]
+C_6	0E0	0.0
+
+## Constant for dipole forming rate [1E-37m^5*s^C_8/s]
+C_7	 0.0E-9	0.0
+#C_7		0.0	0.0
+# Constant for nonlinear climb of edge dislocations
+C_8		0.24	0.0
+# Self interaction
+Selfinter0	0.1	0.0
+# coplanar interaction
+Coplanar0	0.125	0.0
+# cross slip
+CrossSlip0	0.125	0.0
+#CrossSlip	0.8	0.0
+# glissile junction
+GlissileJunction0	0.15 0.0
+#GlissileJunction	0.8 0.0
+# Hirth loc
+HirthLock0	0.1	0.0
+#HirthLock	0.8	0.0
+# Lomer-Cottrell Lock
+LomerCottrellLock0  0.2 0.0
+#LomerCottrellLock	0.8 0.0
+#Diffusion coefficient for climb equation
+D_0     1.5E-3
+#nucleus_radius
+nucleus_radius  4
+#====================================================
+#	Phase field of recrystallization
+#----------------------------------------------------
+# System size for Phase-field (not need to be equal to FFDynamic recrystallization of copper polycrystals with different puritiesT size)
+#CellDim_pf	64 64 64
+CellDim_pf 128 128 128
+# Seed f32 GSL random number generator
+RandSeed 123
+# GB energy [J/m^2]
+E_gb	0.625
+# GB mob2lity [m^4/(MJ*s)]
+M_gb  7.4E-11
+# Burgers vector [nm]
+bb_len		0.256
+# Scaler of stored energy [1]
+Scale_Fdeform	0.5
+# Characteristic nucleation strength (disl. density difference) for DRX [1E12/m^2]
+k_c 320000.0
+# Expon0nt in the statistical model for DRX nucleation [1]
+alpha 8.5
+# Norm3lized GB mobility in phase-field [in grid unit]
+# inversely proportional to the # of phase-field steps
+#M_bar   12.0
+# Coefficient to be multiplied to k_c for re-nucleation
+zeta_kc 1.0
+# Aging time for DRX re-nucleation
+age_drx 1E0
+# Scaler used to be multiplied to SSDs for DRX grains after pahse-field
+ssdScaler_DRX 0.74
+gndScaler_DRX  0.66
+sigScaler_DRX	0.66
+# Static or dynamic implementation of nucleation? (1: static, 0: dynamic)
+Nucl_Static_Flag	1
+# Characteristic aging time for newly-formed DRX grains, normalized by TimeStep
+tau_DRX	1000.0
+# Additional barrier for slip for new DRX grains [J/m^2]
+DeltaQ_DRX	0.0
+# Additional passing stress for new DRX grains 
+DeltaTau_DRX	0.0
+#pf_length_scale
+pf_length_scale     2.5E-06
+#pf_time_step
+pf_time_step        0.004
