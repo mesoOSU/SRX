@@ -1,0 +1,15 @@
+#!bin/bash
+#PBS -A PAA0023
+#PBS -N evp
+#PBS -l walltime=8:30:00
+#PBS -l nodes=4:ppn=16
+#PBS -j oe
+
+cd $PBS_O_WORKDIR
+#LD_LIBRARY_PATH=/usr/local/fftw3/-gnu/lib:/usr/local/mvapich2/1.7-gnu/lib:/usr/local/torque/6.1.2/lib
+#LD_LIBRARY_PATH=/usr/local/fftw3/gnu/7.3/mvapich2/2.3/3.3.8/lib:/opt/mvapich2/gnu/7.3/2.3/lib:/usr/local/gnu/7.3.0/lib64:/usr/local/gnu/7.3.0/lib:/opt/torque/lib64:/opt/torque/lib
+#LD_LIBRARY_PATH=/apps/fftw3/gnu/7.3/mvapich2/2.3/3.3.8/lib:/opt/mvapich2/gnu/7.3/2.3/lib:/apps/gnu/7.3.0/lib64:/apps/gnu/7.3.0/lib:/opt/torque/lib64:/opt/torque/lib
+#LD_LIBRARY_PATH=/usr/local/fftw3/gnu/4.8/mvapich2/2.2/3.3.5/lib:/opt/mvapich2/gnu/4.8/2.2/lib:/opt/torque/lib64:/opt/torque/lib
+export LD_LIBRARY_PATH
+mpirun ./trial input
+
