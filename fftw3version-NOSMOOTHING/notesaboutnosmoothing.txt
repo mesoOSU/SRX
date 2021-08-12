@@ -1,0 +1,1 @@
+This version does not contain fft smoothing. This version has been tested, but try the smoothing version is you want a smoothed result afterwards.
